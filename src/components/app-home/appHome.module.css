@@ -1,0 +1,33 @@
+.header {
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.headerScrolled {
+  background-color: #FFC0CB;
+}
+
+.headerNotScrolled {
+  background-color: white;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav a {
+  /* 可以添加导航链接样式 */
+}
