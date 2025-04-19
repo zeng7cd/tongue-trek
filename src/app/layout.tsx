@@ -1,9 +1,7 @@
-"use client";
-import AppHome from "@/components/app-home/app-home";
 import AppSidebar from "@/components/app-sidebar/app-sidebar";
 import AppHeader from "@/components/app-header/app-header";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
-import { usePathname } from "next/navigation"; // 导入 usePathname 钩子
+import { headers } from "next/headers";
 
 import "./globals.css";
 
@@ -12,17 +10,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname(); // 使用 usePathname 钩子
+  const headersList = headers(); // 获取请求头信息
+  const pathname = headersList.get("x-next-router-path") || "/"; // 获取当前路由
   const isHome = pathname === "/"; // 检查当前路径是否为根路径
 
   return (
     <html lang="en">
       <body>
-        {isHome && (
-          <main>
-            <AppHome />
-          </main>
-        )}
+        {isHome && <main>{children}</main>}
         {!isHome && (
           <SidebarProvider>
             <AppSidebar />
